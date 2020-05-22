@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # google drive credentials
-./credentials
+.credentials/
