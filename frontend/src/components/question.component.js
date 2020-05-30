@@ -95,7 +95,7 @@ export default class Question extends Component {
   }
 
   home = () => {
-    window.location.href = '/';
+    window.location.href = '/home';
   }
 
   render() {

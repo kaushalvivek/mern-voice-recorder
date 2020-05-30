@@ -5,35 +5,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/login.component.js';
 import Main from './components/main.component.js';
 
-const MainComp = <div className="container"><Main /></div>;
-
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signedIn: false,
-      user: ""
+      isSignedIn: false,
+      user: {}
     }
-    this.signedIn = this.signedIn.bind(this);
   }
 
   signedIn = (user) => {
     this.setState({
-      signedIn: true,
+      isSignedIn: true,
       user: user
     });
-    console.log("In signed in")
   }
 
 
   render() {
     if (this.state.isSignedIn === true) {
-      return MainComp;
+      return (
+        <div className="container"><Main user={this.state.user.username} /></div>
+      )
     }
     else {
       return (
         <div className="container">
-          <Login signedIn={this.singnedIn} />
+          <Login onSignIn={this.signedIn} />
         </div>
       )
     }

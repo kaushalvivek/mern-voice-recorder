@@ -5,19 +5,6 @@ import axios from 'axios';
 
 export default class Login extends Component {
 
-  handleSubmit = () => {
-    var user = null;
-    user = this.state.users.find(user => user.username == this.state.username);
-    if (user == null)
-      console.log('No such user')
-
-    else if (user.password == this.state.password) {
-      this.props.signedIn(user);
-    }
-    else
-      console.log("incorrect password")
-  }
-
   constructor(props) {
     super(props);
 
@@ -27,6 +14,22 @@ export default class Login extends Component {
       users: []
     };
   }
+
+
+  handleSubmit = () => {
+    var user = null;
+    user = this.state.users.find(user => user.username == this.state.username);
+    if (user == null)
+      console.log('No such user')
+
+    else if (user.password == this.state.password) {
+      this.props.onSignIn(user);
+    }
+    else
+      console.log("incorrect password")
+  }
+
+
 
   componentDidMount() {
     axios.get('http://localhost:5000/users/')

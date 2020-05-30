@@ -16,7 +16,7 @@ export default class Main extends Component {
     return (
       <Router>
         <div className="container">
-          <Navbar />
+          <Navbar user={this.props.user} />
           <br />
           <Route path="/home" exact component={Home} />
           <Route path="/pending" component={Pending} />
