@@ -31,9 +31,6 @@ export default class Pending extends Component {
   componentDidMount() {
     axios.get('http://localhost:5000/questions/')
       .then(response => {
-        // var filtered = response.data.filter(function (item) {
-        //   return item.answered !== true;
-        // });
         this.setState({ questions: response.data });
       })
       .catch((error) => {

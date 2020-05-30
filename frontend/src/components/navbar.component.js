@@ -19,9 +19,6 @@ export default class Navbar extends Component {
             <li className="navbar-item">
               <Link to="/answered" className="nav-link">Questions Answered</Link>
             </li>
-            <li className="navbar-item">
-              <Link to="/help" className="nav-link">Help</Link>
-            </li>
           </ul>
         </div>
       </nav>

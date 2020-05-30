@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Navbar from './components/navbar.component.js';
-import Pending from './components/pending.component.js';
-import Answered from './components/answered.component.js';
 import Login from './components/login.component.js';
-import Help from './components/help.component.js';
-import Question from './components/question.component.js';
+import Main from './components/main.component.js';
 
-function App() {
-  return (
-    <Router>
-      <div className="container">
-        <Navbar />
-        <br />
-        <Route path="/" exact component={Login} />
-        <Route path="/pending" component={Pending} />
-        <Route path="/answered" component={Answered} />
-        <Route path="/help" component={Help} />
-        <Route path="/question/:_id" component={Question} />
-      </div>
-    </Router>
-  );
+const MainComp = <div className="container"><Main /></div>;
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      signedIn: false,
+      user: ""
+    }
+    this.signedIn = this.signedIn.bind(this);
+  }
+
+  signedIn = (user) => {
+    this.setState({
+      signedIn: true,
+      user: user
+    });
+    console.log("In signed in")
+  }
+
+
+  render() {
+    if (this.state.isSignedIn === true) {
+      return MainComp;
+    }
+    else {
+      return (
+        <div className="container">
+          <Login signedIn={this.singnedIn} />
+        </div>
+      )
+    }
+  };
 }
-
-export default App;
