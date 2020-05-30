@@ -10,7 +10,9 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
-        Home would be implemented here.
+        <h3>Welcome to this application! </h3>
+
+        <p>We are going to ask you a few questions and you can answer them using your voice.</p>
       </div>
     );
   }

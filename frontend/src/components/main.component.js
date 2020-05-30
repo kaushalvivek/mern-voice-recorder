@@ -8,18 +8,21 @@ import Answered from './answered.component.js';
 import Home from './home.component.js';
 import Question from './question.component.js';
 
+
+
 export default class Main extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <Router>
         <div className="container">
           <Navbar user={this.props.user} />
           <br />
-          <Route path="/home" exact component={Home} />
-          <Route path="/pending" component={Pending} />
+          <Route path="/" exact component={Home} />
+          <Route path='/pending' render={(props) => <Pending {...props} user={this.props.user} />} />
           <Route path="/answered" component={Answered} />
           <Route path="/question/:_id" component={Question} />
         </div>

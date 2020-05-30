@@ -24,24 +24,38 @@ export default class Pending extends Component {
     super(props);
 
     this.state = {
-      questions: []
+      questions: [],
+      audios: [],
     };
   }
 
   componentDidMount() {
+    // var question, audios;
     axios.get('http://localhost:5000/questions/')
       .then(response => {
         this.setState({ questions: response.data });
+        // questions = response.data;
       })
       .catch((error) => {
         console.log(error);
       })
+
+    axios.get('http://localhost:5000/audios/')
+      .then(response => {
+        this.setState({ audios: response.data });
+        // audios = response.data
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+    // audios.
   }
 
   render() {
     return (
       <div className="container">
-        <Questions questions={this.state.questions} />
+        <Questions questions={this.state.questions} user={this.props.user} />
       </div>
     );
   }

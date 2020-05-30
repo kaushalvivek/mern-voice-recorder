@@ -84,7 +84,7 @@ export default class Question extends Component {
 
   saveRecording = () => {
     const newAudio = {
-      username: 'test',
+      username: this.props.user,
       filepath: this.state.blobURL,
       question: this.state.id,
     };
@@ -94,9 +94,6 @@ export default class Question extends Component {
     this.setState({ isSaved: true });
   }
 
-  home = () => {
-    window.location.href = '/home';
-  }
 
   render() {
     return (
@@ -121,7 +118,7 @@ export default class Question extends Component {
             <br />
             <br />
             <div
-              clasName=" container"
+              className=" container"
               style={this.state.isRecorded === true ? { display: 'block' } : { display: 'none' }}>
               <audio src={this.state.blobURL} controls="controls" />
               <br />
@@ -143,11 +140,11 @@ export default class Question extends Component {
             <p>
               Recording Saved!
           </p>
-            <Button
-              variant="primary"
-              onClick={this.home}>
-              Go Back
+            <Link to="/" className="nav-link">
+              <Button variant="primary">
+                Go Back
             </Button>
+            </Link>
           </div>
         </div>
       </div >
