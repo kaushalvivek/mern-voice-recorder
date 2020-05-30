@@ -27,9 +27,11 @@ connection.once('open', () => {
 
 const audioRouter = require('./routes/audios')
 const userRouter = require('./routes/users')
+const questionRouter = require('./routes/questions')
 
 app.use('/audios', audioRouter)
 app.use('/users', userRouter)
+app.use('/questions', questionRouter)
 
 // start app
 app.listen(port, () => {

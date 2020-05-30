@@ -7,6 +7,7 @@ import Pending from './components/pending.component.js';
 import Answered from './components/answered.component.js';
 import Login from './components/login.component.js';
 import Help from './components/help.component.js';
+import Question from './components/question.component.js';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/pending" component={Pending} />
         <Route path="/answered" component={Answered} />
         <Route path="/help" component={Help} />
+        <Route path="/question/:_id" component={Question} />
       </div>
     </Router>
   );
