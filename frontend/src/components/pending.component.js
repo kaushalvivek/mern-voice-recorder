@@ -9,9 +9,6 @@ const Questions = props => (
       < Card >
         <Card.Body>
           <Card.Title>Q{question.number} : {question.text}</Card.Title>
-          {/* <Card.Text>
-            {question.text}
-          </Card.Text> */}
           <Link to={"/question/" + question._id}>
             <Button variant="primary">Answer</Button>
           </Link>
@@ -22,9 +19,6 @@ const Questions = props => (
 )
 
 export default class Pending extends Component {
-
-
-
 
   constructor(props) {
     super(props);
@@ -37,6 +31,9 @@ export default class Pending extends Component {
   componentDidMount() {
     axios.get('http://localhost:5000/questions/')
       .then(response => {
+        // var filtered = response.data.filter(function (item) {
+        //   return item.answered !== true;
+        // });
         this.setState({ questions: response.data });
       })
       .catch((error) => {

@@ -12,7 +12,8 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const number = req.body.number;
   const text = req.body.text;
-  const newQuestion = new Question({ number, text });
+  const answered = req.body.answered;
+  const newQuestion = new Question({ number, text, answered });
 
   newQuestion.save()
     .then(() => res.json('Question added!'))
@@ -23,6 +24,20 @@ router.route('/add').post((req, res) => {
 router.route('/:id').get((req, res) => {
   Question.findById(req.params.id)
     .then(question => res.json(question))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+// route to update by id
+router.route('/update/:_id').post((req, res) => {
+  Question.findById(req.params.id)
+    .then(question => {
+      question.number = req.body.number;
+      question.text = req.body.text;
+
+      question.save()
+        .then(() => res.json('question updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
     .catch(err => res.status(400).json('Error: ' + err));
 });
 

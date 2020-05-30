@@ -12,14 +12,12 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
   const username = req.body.username;
   const filepath = req.body.filepath;
-  const question = req.body.duration;
-  const date = Date.parse(req.body.date);
+  const question = req.body.question;
 
   const newAudio = new Audio({
     username,
     filepath,
     question,
-    date,
   });
 
   newAudio.save()
@@ -48,7 +46,6 @@ router.route('/update/:id').post((req, res) => {
       audio.username = req.body.username;
       audio.filepath = req.body.filepath;
       audio.question = req.body.question;
-      audio.date = Date.parse(req.body.date);
 
       audio.save()
         .then(() => res.json('Audio updated!'))
